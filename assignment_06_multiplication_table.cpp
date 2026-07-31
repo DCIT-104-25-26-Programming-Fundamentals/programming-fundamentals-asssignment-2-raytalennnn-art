@@ -56,4 +56,49 @@
 
 #include <iostream>
 using namespace std;
+// PART A - Single Table Function
+void printSingleTable(int num) {
+    cout << "Multiplication Table for " << num << ":" << endl;
+    for (int i = 1; i <= 12; i++) {
+        cout << num << " x " << i << " = " << (num * i) << endl;
+    }
+}
 
+// PART B - Multiple Tables Function (1 to N)
+void printTablesUpToN(int n) {
+    for (int i = 1; i <= n; i++) {
+        printSingleTable(i);
+        if (i < n) {
+            cout << "--------------------" << endl;
+        }
+    }
+}
+
+int main() {
+    int singleNum;
+    cout << "Enter a number: ";
+    cin >> singleNum;
+
+    if (singleNum <= 0) {
+        cout << "Error: Number must be a positive integer." << endl;
+        return 0;
+    }
+
+    printSingleTable(singleNum);
+
+    cout << endl;
+
+    int maxN;
+    cout << "Enter N for full tables (1 to N): ";
+    cin >> maxN;
+
+    if (maxN <= 0) {
+        cout << "Error: N must be a positive integer." << endl;
+        return 0;
+    }
+
+    cout << endl;
+    printTablesUpToN(maxN);
+
+    return 0;
+}
