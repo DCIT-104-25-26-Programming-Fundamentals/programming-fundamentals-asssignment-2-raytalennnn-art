@@ -41,4 +41,61 @@
 
 #include <iostream>
 using namespace std;
+double calculateSum(const double arr[], int n) {
+    double sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
 
+double calculateAverage(const double arr[], int n) {
+    return calculateSum(arr, n) / n;
+}
+
+double findMaximum(const double arr[], int n) {
+    double maxVal = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > maxVal) {
+            maxVal = arr[i];
+        }
+    }
+    return maxVal;
+}
+
+double findMinimum(const double arr[], int n) {
+    double minVal = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < minVal) {
+            minVal = arr[i];
+        }
+    }
+    return minVal;
+}
+
+int main() {
+    int n;
+    cout << "How many numbers? ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Error: Number of elements must be positive." << endl;
+        return 0;
+    }
+
+    double numbers[100]; // Array to hold user inputs
+
+    for (int i = 0; i < n; i++) {
+        cout << "Enter number " << (i + 1) << ": ";
+        cin >> numbers[i];
+    }
+
+    cout << endl;
+    cout << "Results:" << endl;
+    cout << "  Sum:       " << calculateSum(numbers, n) << endl;
+    cout << "  Average:   " << calculateAverage(numbers, n) << endl;
+    cout << "  Maximum:   " << findMaximum(numbers, n) << endl;
+    cout << "  Minimum:   " << findMinimum(numbers, n) << endl;
+
+    return 0;
+}
